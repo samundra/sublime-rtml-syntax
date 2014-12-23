@@ -1,0 +1,69 @@
+{
+    "comment": "Syntax highlighting for RTML source",
+    "name": "rtml",
+    "scopeName": "source.rtml",
+    "fileTypes": ["rtml"],
+    "patterns": [
+                {
+                    "match":"\"(.*?)\"",
+                    "name":"string.quoted.double.rtml",
+                    "captures": {
+                        "1": { "name": "string.quoted.double.rtml" }
+                    }
+                },
+                {
+                    "match":"(id|up)",
+                    "name":"support.constant.rtml"
+                },
+                {
+                    "match":"(name|variable|var|sequence|value|content)",
+                    "name":"variable.parameter.rtml",
+                    "captures": {
+                        "1": { "name": "variable.parameter.rtml" }
+                    }
+                },
+                {
+                    "match":"(nil|clear|number|test|then|else)",
+                    "name":"constant.language.rtml",
+                    "captures": {
+                        "1": {"name":"constant.language.rtml"}
+                    }
+                },
+                 {
+                "match": "(@|:)(\\w+|-|\\d+)+",
+                "name": "variable.other.rtml",
+                "captures": {
+                    "1": { "name": "markup.bold.rtml" },
+                    "2":{"name":"variable.other.rtml"}
+                    },
+                "comment": "Variables @exclusive-seocaption, @exclusive-dnp-txt"
+                },
+            {
+                "match": "(:)([A-Za-z][A-Za-z0-9_-]+)",
+                "name": "keyword.rtml",
+                "captures": {
+                    "1": { "name": "constant.numeric.rtml" },
+                    "2": { "name": "template.string.rtml"}
+                },
+                "comment": "RTML template call eg. :find-templates"
+            },
+            {
+                "match": "(TEXT|GRAB|MULTI)|(FOR-EACH-OBJECT|FOR-EACH)|(LOWERCASE|AS-STRING|id|LINEBREAK|TAG-WHEN)|(TITLE|IMG|DIV|META)|(WHEN|IF|NONEMPTY|WITH|AND|OR|NOT)|(CALL)|(LINES|SEGMENTS|TOKENS|LENGTH)|(WITH\\-OBJECT|WITH\\=)",
+                "name": "keyword.operator.rtml",
+                "captures":{
+                    "0":{"name":"keyword.other.rtml"},
+                    "1":{"name":"keyword.operator.rtml"},
+                    "2":{"name":"keyword.control.rtml"},
+                    "3":{"name":"keyword.operator.rtml"},
+                    "4":{"name":"keyword.operator.rtml"},
+                    "5":{"name":"keyword.operator.rtml"},
+                    "6":{"name":"keyword.operator.rtml"},
+                    "7":{"name":"keyword.operator.rtml"},
+                    "7":{"name":"storage.type.rtml"}
+                },
+                "comment": "RTML operators"
+            }
+
+  ],
+  "uuid": "05d308df-3e52-4717-983f-d5bbcf33ea71"
+}

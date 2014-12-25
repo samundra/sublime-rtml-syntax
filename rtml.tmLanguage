@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>comment</key>
-	<string>TODO:
-• Syntax file for RTML source</string>
+	<string>RTML source syntax highlighting</string>
 	<key>fileTypes</key>
 	<array>
 		<string>rtml</string>
@@ -13,6 +12,39 @@
 	<string>rtml</string>
 	<key>patterns</key>
 	<array>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.rtml</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([A-Z]*-+[A-Z]*)</string>
+			<key>name</key>
+			<string>string.quoted.single.rtml</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.rtml</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.rtml</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(.*?)\((.*?)\)</string>
+			<key>name</key>
+			<string>string.quoted.single.rtml</string>
+		</dict>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -29,7 +61,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(id|up)</string>
+			<string>(\s(id)\s|up)</string>
 			<key>name</key>
 			<string>support.constant.rtml</string>
 		</dict>
@@ -43,7 +75,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(name|variable|var|sequence|value|content)</string>
+			<string>(name|var|sequence|content)</string>
 			<key>name</key>
 			<string>variable.parameter.rtml</string>
 		</dict>
@@ -57,7 +89,21 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(nil|clear|number|test|then|else)</string>
+			<string>(value[\d]?)</string>
+			<key>name</key>
+			<string>constant.language.rtml</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.rtml</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(nil|source|tag|alt|class|title|clear|number|test|then|else|variable|sequence|last|border|cellpadding|cellspacing|valign|align|width|height)</string>
 			<key>name</key>
 			<string>constant.language.rtml</string>
 		</dict>
@@ -83,25 +129,33 @@
 			<string>variable.other.rtml</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>RTML operators</string>
+			<key>match</key>
+			<string>(WITH[=]+)</string>
+			<key>name</key>
+			<string>keyword.operator.rtml</string>
+		</dict>
+		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.rtml</string>
+					<string>keyword.control.rtml</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>template.string.rtml</string>
+					<string>keyword.control.rtml</string>
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>RTML template call eg. :find-templates</string>
+			<string>RTML CALL operators</string>
 			<key>match</key>
-			<string>(:)([A-Za-z][A-Za-z0-9_-]+)</string>
+			<string>:(.*?)\s</string>
 			<key>name</key>
-			<string>keyword.rtml</string>
+			<string>keyword.operator.rtml</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -150,7 +204,7 @@
 			<key>comment</key>
 			<string>RTML operators</string>
 			<key>match</key>
-			<string>(TEXT|GRAB|MULTI)|(FOR-EACH-OBJECT|FOR-EACH)|(LOWERCASE|AS-STRING|id|LINEBREAK|TAG-WHEN)|(TITLE|IMG|DIV|META)|(WHEN|IF|NONEMPTY|WITH|AND|OR|NOT)|(CALL)|(LINES|SEGMENTS|TOKENS|LENGTH)|(WITH\-OBJECT|WITH\=)</string>
+			<string>(TEXT|GRAB|MULTI|CALL)|(FOR-EACH-OBJECT|FOR-EACH)|(LOWERCASE|AS-STRING|LINEBREAK|TAG-WHEN|TABLE)|(TITLE|IMG|DIV|META)|(WHEN|IF|NONEMPTY|WITH|AND|OR|NOT|EQUALS)|(CALL)|(LINES|SEGMENTS|TOKENS|LENGTH|ELEMENTS|VALUE|POSITION|PARAGRAPHS|SHIM|RENDER)|(IMAGE)</string>
 			<key>name</key>
 			<string>keyword.operator.rtml</string>
 		</dict>

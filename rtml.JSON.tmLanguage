@@ -1,9 +1,24 @@
 {
-    "comment": "Syntax highlighting for RTML source",
+    "comment": "RTML source syntax highlighting",
     "name": "rtml",
     "scopeName": "source.rtml",
     "fileTypes": ["rtml"],
     "patterns": [
+                {
+                    "match":"([A-Z]*-+[A-Z]*)",
+                    "name":"string.quoted.single.rtml",
+                    "captures": {
+                        "1": { "name": "string.quoted.single.rtml" }
+                    }
+                },
+                {
+                    "match":"(.*?)\\((.*?)\\)",
+                    "name":"string.quoted.single.rtml",
+                    "captures": {
+                        "1": { "name": "string.quoted.single.rtml" },
+                        "2":{ "name": "constant.language.rtml" }
+                    }
+                },
                 {
                     "match":"\"(.*?)\"",
                     "name":"string.quoted.double.rtml",
@@ -12,18 +27,25 @@
                     }
                 },
                 {
-                    "match":"(id|up)",
+                    "match":"(\\s(id)\\s|up)",
                     "name":"support.constant.rtml"
                 },
                 {
-                    "match":"(name|variable|var|sequence|value|content)",
+                    "match":"(name|var|sequence|content)",
                     "name":"variable.parameter.rtml",
                     "captures": {
                         "1": { "name": "variable.parameter.rtml" }
                     }
                 },
                 {
-                    "match":"(nil|clear|number|test|then|else)",
+                    "match":"(value[\\d]?)",
+                    "name":"constant.language.rtml",
+                    "captures": {
+                        "1": {"name":"constant.language.rtml"}
+                    }
+                },
+                {
+                    "match":"(nil|source|tag|alt|class|title|clear|number|test|then|else|variable|sequence|last|border|cellpadding|cellspacing|valign|align|width|height)",
                     "name":"constant.language.rtml",
                     "captures": {
                         "1": {"name":"constant.language.rtml"}
@@ -38,17 +60,24 @@
                     },
                 "comment": "Variables @exclusive-seocaption, @exclusive-dnp-txt"
                 },
-            {
-                "match": "(:)([A-Za-z][A-Za-z0-9_-]+)",
-                "name": "keyword.rtml",
-                "captures": {
-                    "1": { "name": "constant.numeric.rtml" },
-                    "2": { "name": "template.string.rtml"}
-                },
-                "comment": "RTML template call eg. :find-templates"
+
+                {
+                "match":"(WITH[=]+)",
+                "name":"keyword.operator.rtml",
+                "comment":"RTML operators"
             },
             {
-                "match": "(TEXT|GRAB|MULTI)|(FOR-EACH-OBJECT|FOR-EACH)|(LOWERCASE|AS-STRING|id|LINEBREAK|TAG-WHEN)|(TITLE|IMG|DIV|META)|(WHEN|IF|NONEMPTY|WITH|AND|OR|NOT)|(CALL)|(LINES|SEGMENTS|TOKENS|LENGTH)|(WITH\\-OBJECT|WITH\\=)",
+                "match":":(.*?)\\s",
+                "name":"keyword.operator.rtml",
+                "comment":"RTML CALL operators",
+                "captures": {
+                    "1": { "name": "keyword.control.rtml" },
+                    "2":{"name":"keyword.control.rtml"}
+                }
+
+            },
+            {
+                "match": "(TEXT|GRAB|MULTI|CALL)|(FOR-EACH-OBJECT|FOR-EACH)|(LOWERCASE|AS-STRING|LINEBREAK|TAG-WHEN|TABLE)|(TITLE|IMG|DIV|META)|(WHEN|IF|NONEMPTY|WITH|AND|OR|NOT|EQUALS)|(CALL)|(LINES|SEGMENTS|TOKENS|LENGTH|ELEMENTS|VALUE|POSITION|PARAGRAPHS|SHIM|RENDER)|(IMAGE)",
                 "name": "keyword.operator.rtml",
                 "captures":{
                     "0":{"name":"keyword.other.rtml"},

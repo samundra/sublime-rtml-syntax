@@ -17,4 +17,4 @@ This package provides the syntax higlighting for the RTML source.
 # Screenshot
 ![Screenshot of RTML Source](https://github.com/samundra/sublime-rtml-syntax/blob/master/rtml-syntax-highlight.png)
 
-[email] : admin(at)samundra(dot)com(dot)np
+[email]:admin(at)samundra(dot)com(dot)np
